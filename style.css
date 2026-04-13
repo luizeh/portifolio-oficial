@@ -31,6 +31,36 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+/* =====GERAL===== */
+section {
+  padding: 5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  scroll-margin-top: 100px;
+}
+
+section h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  font-family: "Playfair Display", serif;
+}
+
+h3,
+h4 {
+  font-family: "Outfit", sans-serif;
+  font-weight: 600;
+}
+
+.subtitulo-secao {
+  font-size: 1.1rem;
+  color: var(--cinza-medio);
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
 /* =====CABEÇALHO===== */
 header {
   position: fixed;
@@ -61,30 +91,34 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
 
 .logo {
-  font-size: 1.8rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.8rem);
   font-weight: 800;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-family: "Playfair Display", serif;
   color: var(--cor-destaque-texto);
+  white-space: nowrap;
 }
 
 nav ul {
   display: flex;
   list-style: none;
-  gap: 2.5rem;
+  gap: clamp(0.8rem, 2vw, 2.5rem);
+  flex-wrap: nowrap;
 }
 
 nav a {
   color: var(--cor-destaque);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: clamp(0.7rem, 1.2vw, 0.95rem);
   font-weight: 500;
   transition: all 0.3s ease;
   position: relative;
+  white-space: nowrap;
 }
 
 nav a:hover {
@@ -104,6 +138,16 @@ nav a::after {
 
 nav a:hover::after {
   width: 100%;
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 1rem;
+  }
+
+  nav ul {
+    gap: 0.6rem;
+  }
 }
 
 /* =====HERO===== */
@@ -183,7 +227,7 @@ h1.digitacao {
     width: 0;
   }
   to {
-    width: 73%;
+    width: 62%;
   }
 }
 
@@ -229,35 +273,6 @@ h1.digitacao {
   font-weight: 600;
 }
 
-/* =====GERAL===== */
-section {
-  padding: 5rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  scroll-margin-top: 100px;
-}
-
-section h2 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 700;
-  font-family: "Playfair Display", serif;
-}
-
-h3,
-h4 {
-  font-family: "Outfit", sans-serif;
-  font-weight: 600;
-}
-
-.subtitulo-secao {
-  font-size: 1.1rem;
-  color: var(--cinza-medio);
-  margin-bottom: 3rem;
-  width: 100%;
-}
 
 /* =====SOBRE===== */
 .sobre {
@@ -267,6 +282,7 @@ h4 {
   align-items: center;
   margin-bottom: 300px;
 }
+
 .imagem-sobre {
   position: relative;
   width: 380px;
@@ -305,6 +321,7 @@ h4 {
     transform: rotate(360deg);
   }
 }
+
 .texto-sobre h3 {
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
@@ -317,6 +334,45 @@ h4 {
   line-height: 1.8;
 }
 
+@media (max-width: 900px) {
+  .sobre {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+    margin-bottom: 150px;
+  }
+
+  .imagem-sobre {
+    width: 280px;
+    height: 280px;
+  }
+
+  .imagem-sobre img {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sobre {
+    gap: 2rem;
+    margin-bottom: 80px;
+  }
+
+  .imagem-sobre {
+    width: 220px;
+    height: 220px;
+  }
+
+  .imagem-sobre img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .texto-sobre h3 {
+    font-size: 1.2rem;
+  }
+}
 /* ======================ÁLBUNS====================== */
 .albuns {
   background-color: var(--fundo-escuro-secundario);
