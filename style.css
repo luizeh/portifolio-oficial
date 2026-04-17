@@ -307,8 +307,8 @@ h1.digitacao {
 }
 
 .imagem-sobre img {
-  width: 380px;
-  height: 380px;
+  width: 400px;
+  height: 400px;
   object-fit: cover;
   border-radius: 50%;
   border: 10px solid var(--fundo-escuro);
