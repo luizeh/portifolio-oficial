@@ -70,8 +70,9 @@ header {
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--cor-borda);
   z-index: 3;
-  padding: 1.5rem 2rem;
+  padding: 1rem 1.5rem;
   animation: deslizarParaBaixo 0.6s ease-out;
+  overflow: visible;
 }
 
 @keyframes deslizarParaBaixo {
@@ -92,29 +93,43 @@ nav {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  flex-wrap: wrap; /* permite quebrar linha se necessário, mas mantém tudo em row */
 }
 
 .logo {
-  font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+  font-size: clamp(1rem, 3vw, 1.8rem);
   font-weight: 800;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-family: "Playfair Display", serif;
   color: var(--cor-destaque-texto);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 nav ul {
   display: flex;
   list-style: none;
-  gap: clamp(0.8rem, 2vw, 2.5rem);
+  gap: clamp(0.4rem, 1.5vw, 2.5rem);
   flex-wrap: nowrap;
+  align-items: center;
+  padding: 0;
+  padding-bottom: 6px; /* ← espaço para a underline não ser cortada */
+  margin: 0;
+  overflow-x: auto;
+  overflow-y: visible; /* ← permite a underline "vazar" para baixo */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+nav ul::-webkit-scrollbar {
+  display: none;
 }
 
 nav a {
   color: var(--cor-destaque);
   text-decoration: none;
-  font-size: clamp(0.7rem, 1.2vw, 0.95rem);
+  font-size: clamp(0.65rem, 1.8vw, 0.95rem);
   font-weight: 500;
   transition: all 0.3s ease;
   position: relative;
@@ -140,13 +155,15 @@ nav a:hover::after {
   width: 100%;
 }
 
+/* Remove o flex-direction: column que quebrava o layout */
 @media (max-width: 480px) {
   header {
-    padding: 1rem;
+    padding: 0.8rem 1rem;
   }
 
-  nav ul {
-    gap: 0.6rem;
+  nav {
+    gap: 0.5rem;
+    justify-content: space-between;
   }
 }
 
@@ -472,8 +489,16 @@ h1.digitacao {
 
 .grade-linguagens {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr)); 
   gap: 2rem;
+  justify-content: center;
+}
+
+.cartao-js {
+  grid-column: 1 / -1;
+  width: 100%;         
+  max-width: 536px;     
+  margin: 0 auto;
 }
 
 .cartao-linguagem {
@@ -545,6 +570,29 @@ h1.digitacao {
 
 .cartao-react:hover .icone-linguagem {
   animation-play-state: paused;
+}
+
+/*======RESPONSIVIDADE====== */
+@media (max-width: 480px) {
+  .linguagens {
+    padding: 1.5rem 1rem;
+  }
+
+  .grade-linguagens {
+    gap: 1rem;
+  }
+
+  .cartao-linguagem {
+    padding: 1.2rem 1rem;
+  }
+
+  .icone-linguagem {
+    font-size: 2.4rem;
+  }
+
+  .cartao-linguagem h4 {
+    font-size: 1rem;
+  }
 }
 
 /* =====PROJETOS===== */
